@@ -119,8 +119,9 @@ class Go2Deployer:
         # Initialize low_cmd
         self._init_low_cmd()
 
-        # Try importing gamepad
+        # Try importing gamepad, fallback to keyboard
         self.joystick = None
+        self.use_keyboard = False
         try:
             import pygame
             pygame.init()
@@ -130,9 +131,15 @@ class Go2Deployer:
                 self.joystick.init()
                 print(f"[INFO] Gamepad found: {self.joystick.get_name()}")
             else:
-                print("[INFO] No gamepad found. Use keyboard: WASD=move, QE=turn, SPACE=start, ESC=stop")
+                # No gamepad — use keyboard via pygame window
+                self.use_keyboard = True
+                self.kb_screen = pygame.display.set_mode((400, 200))
+                pygame.display.set_caption("Go2 Keyboard Control")
+                print("[INFO] No gamepad. Keyboard control active (pygame window must be focused):")
+                print("       W/S = forward/backward, A/D = left/right, Q/E = turn, ESC = stop")
         except ImportError:
-            print("[INFO] pygame not installed. Use keyboard: WASD=move, QE=turn, SPACE=start, ESC=stop")
+            print("[WARN] pygame not installed. No velocity control available.")
+            print("       Robot will stand still. Install pygame for keyboard/gamepad control.")
 
     def _init_low_cmd(self):
         """Initialize low command with correct headers (matches official example)."""
@@ -218,7 +225,7 @@ class Go2Deployer:
         return out
 
     def read_gamepad(self):
-        """Read gamepad inputs and update velocity commands."""
+        """Read gamepad or keyboard inputs and update velocity commands."""
         if self.joystick is not None:
             import pygame
             pygame.event.pump()
@@ -232,6 +239,23 @@ class Go2Deployer:
             for i in range(3):
                 if abs(self.velocity_commands[i]) < 0.1:
                     self.velocity_commands[i] = 0.0
+
+        elif self.use_keyboard:
+            # Keyboard control: read current key states
+            import pygame
+            pygame.event.pump()
+            keys = pygame.key.get_pressed()
+            vx, vy, omega = 0.0, 0.0, 0.0
+            if keys[pygame.K_w]: vx = 0.5       # forward
+            if keys[pygame.K_s]: vx = -0.5      # backward
+            if keys[pygame.K_a]: vy = 0.3        # left
+            if keys[pygame.K_d]: vy = -0.3       # right
+            if keys[pygame.K_q]: omega = 0.5     # turn left
+            if keys[pygame.K_e]: omega = -0.5    # turn right
+            if keys[pygame.K_ESCAPE]:
+                print("\n[INFO] ESC pressed, stopping...")
+                self.mode = "idle"
+            self.velocity_commands = np.array([vx, vy, omega], dtype=np.float32)
 
     def send_joint_commands(self, target_positions_sim):
         """
