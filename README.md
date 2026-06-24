@@ -1,8 +1,10 @@
 # E4 - Go2 RL-Based Locomotion Training and Sim-to-Real Deployment
 
-**Course:** Cognitive Architectures for Robotics (COGAR) - University of Genoa, DIBRIS
-**Team E / Assignment 13** · **Student:** Richard Albert King Mechoda (8525970)
-**Supervisor:** Gianluca Galvagni · **Course:** Prof. Fulvio Mastrogiovanni
+**Course:** Cognitive Architectures for Robotics (COGAR), University of Genoa, DIBRIS<br>
+**Assignment:** Team E / Assignment 13 (E4)<br>
+**Student:** Richard Albert King Mechoda (8525970)<br>
+**Professor:** Fulvio Mastrogiovanni<br>
+**Supervisor:** Gianluca Galvagni
 
 A reinforcement-learning locomotion policy for the Unitree Go2 quadruped, trained **entirely in
 simulation** (NVIDIA Isaac Lab / Isaac Sim, PPO via RSL-RL) and transferred **zero-shot** to the
@@ -58,9 +60,7 @@ E4_Go2_RL_SimToReal/
 │   ├── 01_TECHNICAL_REPORT.md          Full methodology (V3 ground truth)
 │   ├── 02_COGNITIVE_ARCHITECTURE.md    COGAR mapping (the cognitive approach)
 │   ├── 03_SIM2REAL_GAP_ANALYSIS.md     Failures, fixes, residual gap, improvements
-│   ├── 04_EXPERIMENT_LOG.md            V2-vs-V3 comparison + metrics
-│   ├── 05_PRESENTATION_GUIDE.md        15-min talk script + Q&A bank
-│   └── figures/
+│   └── 04_EXPERIMENT_LOG.md            V2-vs-V3 comparison + metrics
 └── media/                        Demo stills + video pointers
 ```
 
@@ -69,7 +69,7 @@ E4_Go2_RL_SimToReal/
   Sense-Reasoning/Plan-Act diagram.
 - **Slides:** `slides/COGAR_Go2_Presentation.pptx` (editable PowerPoint) and `.pdf`.
 - **Supporting docs:** `docs/` (technical report, cognitive architecture, sim-to-real gap
-  analysis, experiment log, presentation notes).
+  analysis, experiment log).
 - **Demonstration video:** https://drive.google.com/file/d/1e1jpoKKcbISyVp17HyGn1CQgQ9hJk3pM/view
 
 ## Quick start
