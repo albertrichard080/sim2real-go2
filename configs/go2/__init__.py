@@ -76,3 +76,92 @@ gym.register(
         "rsl_rl_cfg_entry_point": f"{agents.__name__}.rsl_rl_ppo_sim2real_cfg:UnitreeGo2FlatSim2RealPPORunnerCfg",
     },
 )
+
+# === V2 Sim-to-Real Tasks (optimized based on community research) ===
+
+gym.register(
+    id="Isaac-Velocity-Flat-Unitree-Go2-Sim2Real-v2",
+    entry_point="isaaclab.envs:ManagerBasedRLEnv",
+    disable_env_checker=True,
+    kwargs={
+        "env_cfg_entry_point": f"{__name__}.flat_env_sim2real_v2_cfg:UnitreeGo2FlatSim2RealV2EnvCfg",
+        "rsl_rl_cfg_entry_point": f"{agents.__name__}.rsl_rl_ppo_sim2real_v2_cfg:UnitreeGo2FlatSim2RealV2PPORunnerCfg",
+    },
+)
+
+gym.register(
+    id="Isaac-Velocity-Flat-Unitree-Go2-Sim2Real-Play-v2",
+    entry_point="isaaclab.envs:ManagerBasedRLEnv",
+    disable_env_checker=True,
+    kwargs={
+        "env_cfg_entry_point": f"{__name__}.flat_env_sim2real_v2_cfg:UnitreeGo2FlatSim2RealV2EnvCfg_PLAY",
+        "rsl_rl_cfg_entry_point": f"{agents.__name__}.rsl_rl_ppo_sim2real_v2_cfg:UnitreeGo2FlatSim2RealV2PPORunnerCfg",
+    },
+)
+
+# === V2 Rough Terrain Sim-to-Real Tasks ===
+
+gym.register(
+    id="Isaac-Velocity-Rough-Unitree-Go2-Sim2Real-v2",
+    entry_point="isaaclab.envs:ManagerBasedRLEnv",
+    disable_env_checker=True,
+    kwargs={
+        "env_cfg_entry_point": f"{__name__}.rough_env_sim2real_v2_cfg:UnitreeGo2RoughSim2RealV2EnvCfg",
+        "rsl_rl_cfg_entry_point": f"{agents.__name__}.rsl_rl_ppo_rough_sim2real_v2_cfg:UnitreeGo2RoughSim2RealV2PPORunnerCfg",
+    },
+)
+
+gym.register(
+    id="Isaac-Velocity-Rough-Unitree-Go2-Sim2Real-Play-v2",
+    entry_point="isaaclab.envs:ManagerBasedRLEnv",
+    disable_env_checker=True,
+    kwargs={
+        "env_cfg_entry_point": f"{__name__}.rough_env_sim2real_v2_cfg:UnitreeGo2RoughSim2RealV2EnvCfg_PLAY",
+        "rsl_rl_cfg_entry_point": f"{agents.__name__}.rsl_rl_ppo_rough_sim2real_v2_cfg:UnitreeGo2RoughSim2RealV2PPORunnerCfg",
+    },
+)
+
+# === V3 Rough Terrain Sim-to-Real Tasks (fresh start with stability fix) ===
+
+gym.register(
+    id="Isaac-Velocity-Rough-Unitree-Go2-Sim2Real-v3",
+    entry_point="isaaclab.envs:ManagerBasedRLEnv",
+    disable_env_checker=True,
+    kwargs={
+        "env_cfg_entry_point": f"{__name__}.rough_env_sim2real_v3_cfg:UnitreeGo2RoughSim2RealV3EnvCfg",
+        "rsl_rl_cfg_entry_point": f"{agents.__name__}.rsl_rl_ppo_rough_sim2real_v3_cfg:UnitreeGo2RoughSim2RealV3PPORunnerCfg",
+    },
+)
+
+gym.register(
+    id="Isaac-Velocity-Rough-Unitree-Go2-Sim2Real-Play-v3",
+    entry_point="isaaclab.envs:ManagerBasedRLEnv",
+    disable_env_checker=True,
+    kwargs={
+        "env_cfg_entry_point": f"{__name__}.rough_env_sim2real_v3_cfg:UnitreeGo2RoughSim2RealV3EnvCfg_PLAY",
+        "rsl_rl_cfg_entry_point": f"{agents.__name__}.rsl_rl_ppo_rough_sim2real_v3_cfg:UnitreeGo2RoughSim2RealV3PPORunnerCfg",
+    },
+)
+
+
+# === V3 Flat Sim2Real Tasks (production recipe) ===
+
+gym.register(
+    id="Isaac-Velocity-Flat-Unitree-Go2-Sim2Real-v3",
+    entry_point="isaaclab.envs:ManagerBasedRLEnv",
+    disable_env_checker=True,
+    kwargs={
+        "env_cfg_entry_point": f"{__name__}.flat_env_sim2real_v3_cfg:UnitreeGo2FlatSim2RealV3EnvCfg",
+        "rsl_rl_cfg_entry_point": f"{agents.__name__}.rsl_rl_ppo_sim2real_v3_cfg:UnitreeGo2FlatSim2RealV3PPORunnerCfg",
+    },
+)
+
+gym.register(
+    id="Isaac-Velocity-Flat-Unitree-Go2-Sim2Real-Play-v3",
+    entry_point="isaaclab.envs:ManagerBasedRLEnv",
+    disable_env_checker=True,
+    kwargs={
+        "env_cfg_entry_point": f"{__name__}.flat_env_sim2real_v3_cfg:UnitreeGo2FlatSim2RealV3EnvCfg_PLAY",
+        "rsl_rl_cfg_entry_point": f"{agents.__name__}.rsl_rl_ppo_sim2real_v3_cfg:UnitreeGo2FlatSim2RealV3PPORunnerCfg",
+    },
+)
